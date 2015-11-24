@@ -5,7 +5,7 @@
 ## Login scipio_a <scipio_a@epitech.eu>
 ## 
 ## Started on  Tue Oct 20 16:56:16 2015 Alexandre SCIPION
-## Last update Sat Oct 31 02:38:57 2015 Alexandre SCIPION
+## Last update Tue Nov 24 18:15:51 2015 Alexandre SCIPION
 ##
 
 NAME	=	kernel
@@ -13,13 +13,14 @@ NAME	=	kernel
 CFLAGS +=	-nostdinc -fno-builtin -m32
 CFLAGS +=	-fno-stack-protector
 CFLAGS +=	-g3
+CFLAGS +=	-I./inc/
 
 LDFLAGS +=	-nostdlib -m32 -Wl,--build-id=none
 
 all	:	$(NAME)
 
-$(NAME)	:	src/crt0.o src/main.o
-	        gcc $(LDFLAGS) -T kfs.ld -o $(NAME).elf src/main.o src/crt0.o
+$(NAME)	:	src/crt0.o src/main.o src/segmentation.o
+	        gcc $(LDFLAGS) -T kfs.ld -o $(NAME).elf src/main.o src/crt0.o src/segmentation.o
 		@echo "kernel.elf done"
 
 .S.o    :
