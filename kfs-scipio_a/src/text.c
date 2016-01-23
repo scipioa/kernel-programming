@@ -5,7 +5,7 @@
 ** Login scipio_a <scipio_a@epitech.eu>
 ** 
 ** Started on  Thu Jan 14 10:35:35 2016 Alexandre SCIPION
-** Last update Thu Jan 14 10:51:11 2016 Alexandre SCIPION
+** Last update Sat Jan 23 02:39:35 2016 Alexandre SCIPION
 */
 
 #define PORT 0x3F8
@@ -13,6 +13,8 @@
 #define ROW 25
 #define COL 80
 #define POS(x, y) ((x) * COL + (y)) * 2
+
+#include "text.h"
 
 static char *video_mem = (void *) FRAMEBUFFER;
 static char pos_x = 0;
@@ -112,6 +114,37 @@ void printk(const char *msg)
 
 	return ;
 }
+
+void printkn(const uint32_t n)
+{
+	if (n == 0)
+	{
+		printk("0");
+		return;
+	}
+	
+	long int acc = n;
+	char c[32];
+	int i = 0;
+	
+	while (acc > 0)
+	{
+		c[i] = '0' + acc%10;
+		acc /= 10;
+		i++;
+	}
+	c[i] = 0;
+
+	char c2[32];
+	c2[i--] = 0;
+	int j = 0;
+	while(i >= 0)
+	{
+		c2[i--] = c[j++];
+	}
+	printk(c2);
+}
+
 
 unsigned char getCode()
 {

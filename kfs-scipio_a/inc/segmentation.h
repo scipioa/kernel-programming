@@ -5,7 +5,7 @@
 ** Login scipio_a <scipio_a@epitech.eu>
 ** 
 ** Started on  Tue Nov 24 14:28:17 2015 Alexandre SCIPION
-** Last update Thu Jan 14 11:07:36 2016 Alexandre SCIPION
+** Last update Tue Jan 19 10:58:08 2016 Alexandre SCIPION
 */
 
 #ifndef SEGMENTATION_H_
@@ -35,7 +35,9 @@ int set_gdt_entry(int n, uint32_t base,
 			  uint8_t granularity);
 void init_flat_gdt(void);
 
-gdt_entry_t gdt_entries[5];
+gdt_entry_t gdt_entries[3];
 gdt_ptr_t gdt_ptr;
+
+extern void _set_gdt(uint32_t);
 
 #endif /* !SEGMENTATION_H_ */

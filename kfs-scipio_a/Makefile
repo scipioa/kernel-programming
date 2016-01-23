@@ -5,7 +5,7 @@
 ## Login scipio_a <scipio_a@epitech.eu>
 ## 
 ## Started on  Tue Oct 20 16:56:16 2015 Alexandre SCIPION
-## Last update Thu Jan 14 10:31:50 2016 Alexandre SCIPION
+## Last update Sat Jan 23 02:07:19 2016 Alexandre SCIPION
 ##
 
 NAME	=	kernel
@@ -26,15 +26,15 @@ LDFLAGS +=	-nostdlib -m32 -Wl,--build-id=none
 
 all	:	$(NAME)
 
-$(NAME)	:	src/crt0.o $(OBJ)
-	        gcc $(LDFLAGS) -T kfs.ld -o $(NAME).elf src/main.o src/text.o src/crt0.o src/segmentation.o
+$(NAME)	:	src/crt0.o src/routine.o $(OBJ)
+	        gcc $(LDFLAGS) -T kfs.ld -o $(NAME).elf src/crt0.o src/routine.o $(OBJ) 
 		@echo "kernel.elf done"
 
 .S.o    :
 		nasm -f elf32  $<
 
 clean	:
-		rm -f src/main.o src/crt0.o src/segmentation.o src/interrupts.o src/text.o
+		rm -f src/main.o src/crt0.o src/routine.o src/segmentation.o src/interrupts.o src/text.o
 
 fclean	:	clean
 		rm -f kernel.elf

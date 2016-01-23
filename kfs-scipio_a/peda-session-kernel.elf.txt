@@ -1,4 +1,0 @@
-break init_flat_gdt
-break _set_gdt
-break *0xc2b4
-
